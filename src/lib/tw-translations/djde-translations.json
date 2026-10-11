@@ -1,15 +1,39 @@
 {
     "en": {
-        "djde.guiDefaultTitle": "Create games by programming with blocks"
+        "djde.guiDefaultTitle": "Create games by programming with blocks",
+        "djde.footer.project": "DJDE · Digital Game Development in Education · UFRJ",
+        "djde.home.description": "Here you play and show your {APP_NAME} projects. To open one, use File → Load from your computer and choose the .sb3 file.",
+        "djde.home.phoneHint": "To program, use a computer or tablet. {editorLink}",
+        "djde.home.openEditorAnyway": "Open the editor anyway",
+        "djde.home.openEditor": "Open the editor"
     },
     "pt": {
-        "djde.guiDefaultTitle": "Crie jogos programando com blocos"
+        "djde.guiDefaultTitle": "Crie jogos programando com blocos",
+        "djde.footer.project": "DJDE · Desenvolvimento de Jogos Digitais na Educação · UFRJ",
+        "djde.home.description": "Aqui você joga e mostra seus projetos do {APP_NAME}. Para abrir um, use Arquivo → Carregar do seu computador e escolha o arquivo .sb3.",
+        "djde.home.phoneHint": "Para programar, use um computador ou tablet. {editorLink}",
+        "djde.home.openEditorAnyway": "Abrir o editor mesmo assim",
+        "djde.home.openEditor": "Abrir o editor",
+        "tw.footer.disclaimer": "O {APP_NAME} não é afiliado ao Scratch, ao Time do Scratch nem à Scratch Foundation.",
+        "tw.footer.scratchDisclaimer": "O Scratch é um projeto da Scratch Foundation, disponível gratuitamente em {scratchDotOrg}."
     },
     "pt-br": {
-        "djde.guiDefaultTitle": "Crie jogos programando com blocos"
+        "djde.guiDefaultTitle": "Crie jogos programando com blocos",
+        "djde.footer.project": "DJDE · Desenvolvimento de Jogos Digitais na Educação · UFRJ",
+        "djde.home.description": "Aqui você joga e mostra seus projetos do {APP_NAME}. Para abrir um, use Arquivo → Carregar do seu computador e escolha o arquivo .sb3.",
+        "djde.home.phoneHint": "Para programar, use um computador ou tablet. {editorLink}",
+        "djde.home.openEditorAnyway": "Abrir o editor mesmo assim",
+        "djde.home.openEditor": "Abrir o editor",
+        "tw.footer.disclaimer": "O {APP_NAME} não é afiliado ao Scratch, ao Time do Scratch nem à Scratch Foundation.",
+        "tw.footer.scratchDisclaimer": "O Scratch é um projeto da Scratch Foundation, disponível gratuitamente em {scratchDotOrg}."
     },
     "es": {
         "djde.guiDefaultTitle": "Crea juegos programando con bloques",
-        "gui.menuBar.settings": "Configuración"
+        "gui.menuBar.settings": "Configuración",
+        "djde.footer.project": "DJDE · Desarrollo de Juegos Digitales en la Educación · UFRJ",
+        "djde.home.description": "Aquí juegas y muestras tus proyectos de {APP_NAME}. Para abrir uno, usa Archivo → Cargar desde tu computadora y elige el archivo .sb3.",
+        "djde.home.phoneHint": "Para programar, usa una computadora o tableta. {editorLink}",
+        "djde.home.openEditorAnyway": "Abrir el editor de todos modos",
+        "djde.home.openEditor": "Abrir el editor"
     }
 }

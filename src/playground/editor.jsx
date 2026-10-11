@@ -20,5 +20,12 @@ import React from 'react';
 
 import Interface from './render-interface.jsx';
 import render from './app-target';
+import {isPhone, wantsEditorAnyway} from '../lib/djde/mobile';
 
-render(<Interface />);
+// DJDE Studio: no celular o editor não cabe; vai pro jogador (página inicial), preservando idioma e projeto.
+const sendToPlayer = isPhone() && !wantsEditorAnyway();
+if (sendToPlayer) {
+    location.replace(`${process.env.ROOT || ''}index.html${location.search}${location.hash}`);
+} else {
+    render(<Interface />);
+}

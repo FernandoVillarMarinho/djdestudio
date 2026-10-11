@@ -30,8 +30,6 @@ import SettingsStore from '../addons/settings-store-singleton';
 import '../lib/tw-fix-history-api';
 import GUI from './render-gui.jsx';
 import MenuBar from '../components/menu-bar/menu-bar.jsx';
-import ProjectInput from '../components/tw-project-input/project-input.jsx';
-import FeaturedProjects from '../components/tw-featured-projects/featured-projects.jsx';
 import Description from '../components/tw-description/description.jsx';
 import BrowserModal from '../components/browser-modal/browser-modal.jsx';
 import CloudVariableBadge from '../containers/tw-cloud-variable-badge.jsx';
@@ -42,6 +40,7 @@ import {loadServiceWorker} from './load-service-worker';
 import runAddons from '../addons/entry';
 import InvalidEmbed from '../components/tw-invalid-embed/invalid-embed.jsx';
 import {APP_NAME} from '../lib/brand.js';
+import {isPhone} from '../lib/djde/mobile';
 
 import styles from './interface.css';
 
@@ -81,6 +80,8 @@ if (AddonChannels.changeChannel) {
 
 runAddons();
 
+// DJDE Studio: rodapé próprio. Os avisos sobre o Scratch continuam (exigência da marca Scratch);
+// links da TurboWarp saem e entra o código-fonte do DJDE Studio (GPL-3.0).
 const Footer = () => (
     <footer className={styles.footer}>
         <div className={styles.footerContent}>
@@ -116,6 +117,14 @@ const Footer = () => (
                 />
             </div>
 
+            <div className={styles.footerText}>
+                <FormattedMessage
+                    defaultMessage="DJDE · Digital Game Development in Education · UFRJ"
+                    description="DJDE Studio footer: project and university"
+                    id="djde.footer.project"
+                />
+            </div>
+
             <div className={styles.footerColumns}>
                 <div className={styles.footerSection}>
                     <a href="credits.html">
@@ -125,58 +134,18 @@ const Footer = () => (
                             id="tw.footer.credits"
                         />
                     </a>
-                </div>
-                <div className={styles.footerSection}>
-                    <a href="https://desktop.turbowarp.org/">
-                        {/* Do not translate */}
-                        {'TurboWarp Desktop'}
-                    </a>
-                    <a href="https://packager.turbowarp.org/">
-                        {/* Do not translate */}
-                        {'TurboWarp Packager'}
-                    </a>
-                    <a href="https://docs.turbowarp.org/embedding">
-                        <FormattedMessage
-                            defaultMessage="Embedding"
-                            description="Link in footer to embedding documentation for embedding link"
-                            id="tw.footer.embed"
-                        />
-                    </a>
-                    <a href="https://docs.turbowarp.org/url-parameters">
-                        <FormattedMessage
-                            defaultMessage="URL Parameters"
-                            description="Link in footer to URL parameters documentation"
-                            id="tw.footer.parameters"
-                        />
-                    </a>
-                    <a href="https://docs.turbowarp.org/">
-                        <FormattedMessage
-                            defaultMessage="Documentation"
-                            description="Link in footer to additional documentation"
-                            id="tw.footer.documentation"
-                        />
-                    </a>
-                </div>
-                <div className={styles.footerSection}>
-                    <a href="https://scratch.mit.edu/users/GarboMuffin/#comments">
-                        <FormattedMessage
-                            defaultMessage="Feedback & Bugs"
-                            description="Link to feedback/bugs page"
-                            id="tw.feedback"
-                        />
-                    </a>
-                    <a href="https://github.com/TurboWarp/">
-                        <FormattedMessage
-                            defaultMessage="Source Code"
-                            description="Link to source code"
-                            id="tw.code"
-                        />
-                    </a>
                     <a href="privacy.html">
                         <FormattedMessage
                             defaultMessage="Privacy Policy"
                             description="Link to privacy policy"
                             id="tw.privacy"
+                        />
+                    </a>
+                    <a href="https://github.com/FernandoVillarMarinho/djdestudio">
+                        <FormattedMessage
+                            defaultMessage="Source Code"
+                            description="Link to source code"
+                            id="tw.code"
                         />
                     </a>
                 </div>
@@ -185,14 +154,42 @@ const Footer = () => (
     </footer>
 );
 
+// DJDE Studio: largura do palco no jogador (480 + 2 de borda). Em tela mais estreita, o bloco central é reduzido.
+const PLAYER_WIDTH = 482;
+const getPlayerZoom = stageWidth => {
+    const needed = Math.max(480, stageWidth) + 2;
+    const available = window.innerWidth - 8;
+    return available < needed ? available / needed : 1;
+};
+
 class Interface extends React.Component {
     constructor (props) {
         super(props);
         this.handleUpdateProjectTitle = this.handleUpdateProjectTitle.bind(this);
+        this.handleResize = this.handleResize.bind(this);
+        this.state = {
+            playerZoom: getPlayerZoom(PLAYER_WIDTH - 2)
+        };
+    }
+    componentDidMount () {
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+    }
+    componentWillUnmount () {
+        window.removeEventListener('resize', this.handleResize);
+    }
+    handleResize () {
+        const zoom = getPlayerZoom(this.props.customStageSize.width);
+        if (zoom !== this.state.playerZoom) {
+            this.setState({playerZoom: zoom});
+        }
     }
     componentDidUpdate (prevProps) {
         if (prevProps.isLoading && !this.props.isLoading) {
             loadServiceWorker();
+        }
+        if (prevProps.customStageSize !== this.props.customStageSize) {
+            this.handleResize();
         }
     }
     handleUpdateProjectTitle (title, isDefault) {
@@ -222,6 +219,7 @@ class Interface extends React.Component {
         } = this.props;
         const isHomepage = isPlayerOnly && !isFullScreen;
         const isEditor = !isPlayerOnly;
+        const phone = isPhone();
         return (
             <div
                 className={classNames(styles.container, {
@@ -237,8 +235,8 @@ class Interface extends React.Component {
                             canChangeLanguage
                             canManageFiles
                             canChangeTheme
-                            enableSeeInside
-                            onClickAddonSettings={handleClickAddonSettings}
+                            enableSeeInside={!phone}
+                            onClickAddonSettings={phone ? null : handleClickAddonSettings}
                         />
                     </div>
                 ) : null}
@@ -246,7 +244,9 @@ class Interface extends React.Component {
                     className={styles.center}
                     style={isPlayerOnly ? ({
                         // + 2 accounts for 1px border on each side of the stage
-                        width: `${Math.max(480, props.customStageSize.width) + 2}px`
+                        width: `${Math.max(480, props.customStageSize.width) + 2}px`,
+                        // DJDE Studio: no celular, reduz o jogador pra caber na largura da tela
+                        zoom: isHomepage && this.state.playerZoom < 1 ? this.state.playerZoom : null
                     }) : null}
                 >
                     <GUI
@@ -261,9 +261,6 @@ class Interface extends React.Component {
                             {isBrowserSupported() ? null : (
                                 <BrowserModal isRtl={isRtl} />
                             )}
-                            <div className={styles.section}>
-                                <ProjectInput />
-                            </div>
                             {hasCloudVariables && projectId !== '0' && (
                                 <div className={styles.section}>
                                     <CloudVariableBadge />
@@ -282,9 +279,9 @@ class Interface extends React.Component {
                                 <p>
                                     <FormattedMessage
                                         // eslint-disable-next-line max-len
-                                        defaultMessage="{APP_NAME} is a Scratch mod that compiles projects to JavaScript to make them run really fast. Try it out by inputting a project ID or URL above or choosing a featured project below."
-                                        description="Description of TurboWarp on the homepage"
-                                        id="tw.home.description"
+                                        defaultMessage="Here you play and show your {APP_NAME} projects. To open one, use File → Load from your computer and choose the .sb3 file."
+                                        description="DJDE Studio homepage: what the player page is for"
+                                        id="djde.home.description"
                                         values={{
                                             APP_NAME
                                         }}
@@ -292,7 +289,35 @@ class Interface extends React.Component {
                                 </p>
                             </div>
                             <div className={styles.section}>
-                                <FeaturedProjects studio="27205657" />
+                                <p>
+                                    {phone ? (
+                                        <FormattedMessage
+                                            // eslint-disable-next-line max-len
+                                            defaultMessage="To program, use a computer or tablet. {editorLink}"
+                                            description="DJDE Studio homepage on phones: where to program"
+                                            id="djde.home.phoneHint"
+                                            values={{
+                                                editorLink: (
+                                                    <a href={`${process.env.ROOT || ''}editor.html?editor=1`}>
+                                                        <FormattedMessage
+                                                            defaultMessage="Open the editor anyway"
+                                                            description="DJDE Studio homepage on phones: link to force the editor"
+                                                            id="djde.home.openEditorAnyway"
+                                                        />
+                                                    </a>
+                                                )
+                                            }}
+                                        />
+                                    ) : (
+                                        <a href={`${process.env.ROOT || ''}editor.html`}>
+                                            <FormattedMessage
+                                                defaultMessage="Open the editor"
+                                                description="DJDE Studio homepage: link to the editor"
+                                                id="djde.home.openEditor"
+                                            />
+                                        </a>
+                                    )}
+                                </p>
                             </div>
                         </React.Fragment>
                     ) : null}
