@@ -51,7 +51,7 @@ const projectData = translateFunction => {
             },
             {
                 isStage: false,
-                name: translator(messages.sprite, {index: 1}),
+                name: 'Íris',
                 variables: {},
                 lists: {},
                 broadcasts: {},
@@ -60,13 +60,31 @@ const projectData = translateFunction => {
                 currentCostume: 0,
                 costumes: [
                     {
-                        assetId: '927d672925e7b99f7813735c484c6922',
-                        name: translator(messages.costume, {index: 1}),
-                        bitmapResolution: 1,
-                        md5ext: '927d672925e7b99f7813735c484c6922.svg',
-                        dataFormat: 'svg',
-                        rotationCenterX: 30.74937882782359,
-                        rotationCenterY: 58.864768144346826
+                        assetId: '56c24ca4bd6d94884a2e403475721028',
+                        name: 'Íris',
+                        bitmapResolution: 2,
+                        md5ext: '56c24ca4bd6d94884a2e403475721028.png',
+                        dataFormat: 'png',
+                        rotationCenterX: 120,
+                        rotationCenterY: 120
+                    },
+                    {
+                        assetId: '8803e072df9f8456a515d697b942a086',
+                        name: 'Íris andando 1',
+                        bitmapResolution: 2,
+                        md5ext: '8803e072df9f8456a515d697b942a086.png',
+                        dataFormat: 'png',
+                        rotationCenterX: 120,
+                        rotationCenterY: 120
+                    },
+                    {
+                        assetId: '9b0121064975b1320cb433dcf30d8355',
+                        name: 'Íris andando 2',
+                        bitmapResolution: 2,
+                        md5ext: '9b0121064975b1320cb433dcf30d8355.png',
+                        dataFormat: 'png',
+                        rotationCenterX: 120,
+                        rotationCenterY: 120
                     }
                 ],
                 sounds: [],
