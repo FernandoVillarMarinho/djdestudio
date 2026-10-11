@@ -24,11 +24,10 @@ const manuallyTrustExtension = url => {
  * @returns {boolean} True if the extension can is trusted
  */
 const isTrustedExtension = url => (
-    // Always trust our official extension repostiory.
-    url.startsWith('https://extensions.turbowarp.org/') ||
+    // DJDE Studio (D-07): a galeria extensions.turbowarp.org não é mais confiável automaticamente.
 
-    // For development.
-    url.startsWith('http://localhost:8000/') ||
+    // Só em build de desenvolvimento (D-02).
+    (process.env.NODE_ENV !== 'production' && url.startsWith('http://localhost:8000/')) ||
 
     extensionsTrustedByUser.has(url)
 );
@@ -63,10 +62,8 @@ const isAlwaysTrustedForFetching = parsed => (
     // If we would trust loading an extension from here, we can trust loading resources too.
     isTrustedExtension(parsed.href) ||
 
-    // Any TurboWarp service such as trampoline
-    parsed.origin === 'https://turbowarp.org' ||
-    parsed.origin.endsWith('.turbowarp.org') ||
-    parsed.origin.endsWith('.turbowarp.xyz') ||
+    // DJDE Studio (D-07): serviços da TurboWarp (*.turbowarp.org/.xyz) saíram desta lista;
+    // um projeto que tente acessá-los passa a pedir permissão ao usuário.
 
     // GitHub API
     // GitHub Pages allows redirects, so not included here.

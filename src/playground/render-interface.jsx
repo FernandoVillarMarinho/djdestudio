@@ -26,7 +26,6 @@ import ErrorBoundaryHOC from '../lib/error-boundary-hoc.jsx';
 import TWProjectMetaFetcherHOC from '../lib/tw-project-meta-fetcher-hoc.jsx';
 import TWStateManagerHOC from '../lib/tw-state-manager-hoc.jsx';
 import SBFileUploaderHOC from '../lib/sb-file-uploader-hoc.jsx';
-import TWPackagerIntegrationHOC from '../lib/tw-packager-integration-hoc.jsx';
 import SettingsStore from '../addons/settings-store-singleton';
 import '../lib/tw-fix-history-api';
 import GUI from './render-gui.jsx';
@@ -57,15 +56,15 @@ const handleClickAddonSettings = addonId => {
 
 const messages = defineMessages({
     defaultTitle: {
-        defaultMessage: 'Run Scratch projects faster',
+        defaultMessage: 'Crie jogos programando com blocos',
         description: 'Title of homepage',
         id: 'tw.guiDefaultTitle'
     }
 });
 
+// DJDE Studio (D-07): integração com o packager.turbowarp.org removida do menu.
 const WrappedMenuBar = compose(
-    SBFileUploaderHOC,
-    TWPackagerIntegrationHOC
+    SBFileUploaderHOC
 )(MenuBar);
 
 if (AddonChannels.reloadChannel) {
@@ -344,8 +343,7 @@ const WrappedInterface = compose(
     AppStateHOC,
     ErrorBoundaryHOC('TW Interface'),
     TWProjectMetaFetcherHOC,
-    TWStateManagerHOC,
-    TWPackagerIntegrationHOC
+    TWStateManagerHOC
 )(ConnectedInterface);
 
 export default WrappedInterface;
