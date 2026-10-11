@@ -1,0 +1,15 @@
+{
+    "en": {
+        "djde.guiDefaultTitle": "Create games by programming with blocks"
+    },
+    "pt": {
+        "djde.guiDefaultTitle": "Crie jogos programando com blocos"
+    },
+    "pt-br": {
+        "djde.guiDefaultTitle": "Crie jogos programando com blocos"
+    },
+    "es": {
+        "djde.guiDefaultTitle": "Crea juegos programando con bloques",
+        "gui.menuBar.settings": "Configuración"
+    }
+}

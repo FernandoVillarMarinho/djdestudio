@@ -56,9 +56,9 @@ const handleClickAddonSettings = addonId => {
 
 const messages = defineMessages({
     defaultTitle: {
-        defaultMessage: 'Crie jogos programando com blocos',
+        defaultMessage: 'Create games by programming with blocks',
         description: 'Title of homepage',
-        id: 'tw.guiDefaultTitle'
+        id: 'djde.guiDefaultTitle'
     }
 });
 

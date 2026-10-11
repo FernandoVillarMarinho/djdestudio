@@ -23,18 +23,9 @@ const detectLocale = supportedLocales => {
         }
     } catch (e) { /* ignore */ }
 
-    let locale = 'en'; // default
-    let browserLocale = window.navigator.userLanguage || window.navigator.language;
-    browserLocale = browserLocale.toLowerCase();
-    // try to set locale from browserLocale
-    if (supportedLocales.includes(browserLocale)) {
-        locale = browserLocale;
-    } else {
-        browserLocale = browserLocale.split('-')[0];
-        if (supportedLocales.includes(browserLocale)) {
-            locale = browserLocale;
-        }
-    }
+    // DJDE Studio: abre sempre em português brasileiro, independente do navegador.
+    // A escolha feita na engrenagem (localStorage) e ?lang= na URL continuam valendo.
+    const locale = 'pt-br';
 
     const queryParams = queryString.parse(location.search);
     // Flatten potential arrays and remove falsy values
