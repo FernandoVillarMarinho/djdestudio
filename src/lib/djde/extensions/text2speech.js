@@ -67,13 +67,14 @@ class DJDEText2SpeechBlocks extends Scratch3Text2SpeechBlocks {
 
         return new Promise(resolve => {
             let done = false;
+            let timeout = null;
             const finish = () => {
                 if (done) return;
                 done = true;
                 clearTimeout(timeout);
                 resolve();
             };
-            const timeout = setTimeout(finish, fallbackTimeoutMs(words));
+            timeout = setTimeout(finish, fallbackTimeoutMs(words));
             utterance.onend = finish;
             utterance.onerror = finish;
             try {
