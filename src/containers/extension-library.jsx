@@ -39,10 +39,15 @@ const translateGalleryItem = (extension, locale) => ({
     description: extension.descriptionTranslations[locale] || extension.description
 });
 
+// DJDE Studio (D-07): a galeria da TurboWarp saiu. A galeria DJDE entra pelo build
+// (DJDE_GALLERY_URL, raiz com barra final, no formato de extensions-v0.json).
+// Vazia = sem galeria e sem nenhuma requisição ao abrir a biblioteca.
+const GALLERY_ROOT = process.env.DJDE_GALLERY_URL || '';
+
 let cachedGallery = null;
 
 const fetchLibrary = async () => {
-    const res = await fetch('https://extensions.turbowarp.org/generated-metadata/extensions-v0.json');
+    const res = await fetch(`${GALLERY_ROOT}generated-metadata/extensions-v0.json`);
     if (!res.ok) {
         throw new Error(`HTTP status ${res.status}`);
     }
@@ -53,8 +58,8 @@ const fetchLibrary = async () => {
         description: extension.description,
         descriptionTranslations: extension.descriptionTranslations || {},
         extensionId: extension.id,
-        extensionURL: `https://extensions.turbowarp.org/${extension.slug}.js`,
-        iconURL: `https://extensions.turbowarp.org/${extension.image || 'images/unknown.svg'}`,
+        extensionURL: `${GALLERY_ROOT}${extension.slug}.js`,
+        iconURL: `${GALLERY_ROOT}${extension.image || 'images/unknown.svg'}`,
         tags: ['tw'],
         credits: [
             ...(extension.original || []),
@@ -74,9 +79,9 @@ const fetchLibrary = async () => {
             }
             return credit.name;
         }),
-        docsURI: extension.docs ? `https://extensions.turbowarp.org/${extension.slug}` : null,
+        docsURI: extension.docs ? `${GALLERY_ROOT}${extension.slug}` : null,
         samples: extension.samples ? extension.samples.map(sample => ({
-            href: `${process.env.ROOT}editor?project_url=https://extensions.turbowarp.org/samples/${encodeURIComponent(sample)}.sb3`,
+            href: `${process.env.ROOT}editor?project_url=${GALLERY_ROOT}samples/${encodeURIComponent(sample)}.sb3`,
             text: sample
         })) : null,
         incompatibleWithScratch: !extension.scratchCompatible,
@@ -97,7 +102,7 @@ class ExtensionLibrary extends React.PureComponent {
         };
     }
     componentDidMount () {
-        if (!this.state.gallery) {
+        if (GALLERY_ROOT && !this.state.gallery) {
             const timeout = setTimeout(() => {
                 this.setState({
                     galleryTimedOut: true
@@ -158,11 +163,13 @@ class ExtensionLibrary extends React.PureComponent {
     }
     render () {
         let library = null;
-        if (this.state.gallery || this.state.galleryError || this.state.galleryTimedOut) {
+        if (!GALLERY_ROOT) {
+            library = extensionLibraryContent.map(toLibraryItem);
+        } else if (this.state.gallery || this.state.galleryError || this.state.galleryTimedOut) {
             library = extensionLibraryContent.map(toLibraryItem);
             library.push('---');
             if (this.state.gallery) {
-                library.push(toLibraryItem(galleryMore));
+                library.push(toLibraryItem({...galleryMore, href: GALLERY_ROOT}));
                 const locale = this.props.intl.locale;
                 library.push(
                     ...this.state.gallery
@@ -171,9 +178,9 @@ class ExtensionLibrary extends React.PureComponent {
                         .map(toLibraryItem)
                 );
             } else if (this.state.galleryError) {
-                library.push(toLibraryItem(galleryError));
+                library.push(toLibraryItem({...galleryError, href: GALLERY_ROOT}));
             } else {
-                library.push(toLibraryItem(galleryLoading));
+                library.push(toLibraryItem({...galleryLoading, href: GALLERY_ROOT}));
             }
         }
 
