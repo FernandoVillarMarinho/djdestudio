@@ -1,12 +1,14 @@
 import VM from 'scratch-vm';
 import storage from '../lib/storage';
 import {MAXIMUM_CLOUD_VARIABLES} from '../lib/tw-cloud-limits';
+import registerDJDEExtensions from '../lib/djde/extensions';
 
 const SET_VM = 'scratch-gui/vm/SET_VM';
 const defaultVM = new VM();
 defaultVM.setCompatibilityMode(true);
 defaultVM.runtime.cloudOptions.limit = MAXIMUM_CLOUD_VARIABLES;
 defaultVM.attachStorage(storage);
+registerDJDEExtensions(defaultVM);
 const initialState = defaultVM;
 
 const reducer = function (state, action) {
