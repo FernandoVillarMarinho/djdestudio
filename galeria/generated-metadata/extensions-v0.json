@@ -1,0 +1,604 @@
+{
+ "extensions": [
+  {
+   "slug": "lab/text",
+   "id": "text",
+   "name": "Animated Text",
+   "description": "An easy way to display and animate text. Compatible with Scratch Lab's Animated Text experiment.",
+   "nameTranslations": {
+    "de": "Animierter Text",
+    "es": "Texto Animado",
+    "fi": "Animoitu teksti",
+    "it": "Testo Animato",
+    "ja": "アニメーションテキスト",
+    "ko": "애니메이션 텍스트",
+    "nb": "Animert Tekst",
+    "nl": "Geanimeerde tekst",
+    "pl": "Animowany Tekst",
+    "ru": "Анимированный Текст",
+    "uk": "Анімований Текст",
+    "zh-cn": "动画文字"
+   },
+   "descriptionTranslations": {
+    "de": "Eine einfache Art, Text anzuzeigen und zu animieren. Mit dem Animated Text-Experiment in Scratch Lab kompatibel.",
+    "es": "Una forma fácil de mostrar y animar texto. Compatible con el experimento de Texto Animado de Scratch Lab.",
+    "fi": "Helppo tapa näyttää ja animoida tekstiä. Yhteensopiva Scratch Labin Animoitu teksti -kokeilun kanssa.",
+    "it": "Un modo semplice per mostrare e animare il testo. Compatibie con i blocchi sperimentali \"Testo Animato\" di Scratch Lab.",
+    "ja": "テキストを表示・動画化する簡単な方法です。Scratch LabのAnimated Text実験機能との互換性があります。",
+    "ko": "텍스트를 간편하게 나타내고 애니메이션을 적용합니다. Scratch Lab의 Animated Text 실험판과 호환됩니다.",
+    "nb": "En enkel måte å vise og animere tekst på. Kompatibel med Scratch Lab's Animated Text eksperiment.",
+    "nl": "Toon en animeer tekst op een simpele manier. Compatibel met het experiment Animated Text van Scratch Lab.",
+    "ru": "Лёгкий путь отображать и анимировать текст. Совместимо с Scratch Lab эксперементом \"Анимированный текст\".",
+    "uk": "Простий спосіб відображення анімованого тексту. Сумісний зі Scratch Lab's Animated Text.",
+    "zh-cn": "显示与设置动画文字的简单方式。兼容 Scratch Lab 的动画文字实验项目。"
+   },
+   "image": "images/lab/text.svg",
+   "by": [
+    {
+     "name": "LilyMakesThings",
+     "link": null
+    },
+    {
+     "name": "GarboMuffin",
+     "link": null
+    }
+   ]
+  },
+  {
+   "slug": "stretch",
+   "id": "stretch",
+   "name": "Stretch",
+   "description": "Stretch sprites horizontally or vertically.",
+   "nameTranslations": {
+    "de": "Strecken",
+    "fi": "Venytä",
+    "it": "Stira",
+    "ja": "伸縮",
+    "ko": "늘리기",
+    "nb": "Strekke",
+    "nl": "Rekken",
+    "ru": "Растяжение",
+    "uk": "Розтяжка",
+    "zh-cn": "拉伸"
+   },
+   "descriptionTranslations": {
+    "de": "Strecke Figuren horizontal oder vertikal.",
+    "fi": "Venytä hahmoja pysty- ja vaakasuunnassa.",
+    "it": "Stira gli sprite in orizzontale e in verticale.",
+    "ja": "スプライトを水平または垂直に引き伸ばします。",
+    "ko": "스프라이트를 수직 또는 수평으로 늘립니다.",
+    "nb": "Strekke sprites horisontalt eller vertikalt.",
+    "nl": "Rek je sprites horizontaal en verticaal uit.",
+    "ru": "Растягивает спрайты горизонтально или вертикально.",
+    "uk": "Розтягуйте спрайти горизонтально та вертикально.",
+    "zh-cn": "水平或竖直拉伸角色。"
+   },
+   "image": "images/stretch.svg",
+   "by": [
+    {
+     "name": "GarboMuffin",
+     "link": null
+    },
+    {
+     "name": "TheStarWorld",
+     "link": null
+    }
+   ]
+  },
+  {
+   "slug": "JeremyGamer13/tween",
+   "id": "jeremygamerTweening",
+   "name": "Tween",
+   "description": "Easing methods for smooth animations.",
+   "nameTranslations": {
+    "fi": "Interpolointi",
+    "it": "Animazioni Interpolate",
+    "ko": "트윈 애니메이션",
+    "nl": "Overgangen",
+    "ru": "Плавность",
+    "tr": "Ara",
+    "uk": "Анімування",
+    "zh-cn": "补间"
+   },
+   "descriptionTranslations": {
+    "de": "Methoden für sanftere Animationen",
+    "fi": "Sujuvampien animaatioiden tekemistä helpottavia menetelmiä.",
+    "it": "Metodi di interpolazione per rendere più fluide le animazioni.",
+    "ja": "イージングでアニメーションをスムーズにします。",
+    "ko": "부드러운 애니메이션을 위한 easing 방식들을 제공합니다.",
+    "nb": "Easing metoder for jevne animasjoner.",
+    "nl": "Maak je animaties soepeler met geleidelijke overgangen.",
+    "ru": "Упрощенные методы для плавной анимации.",
+    "tr": "Pürüzsüz animasyonlar için kolaylaştırma yöntemleri.",
+    "uk": "Простіші методи створення плавних анімацій.",
+    "zh-cn": "简化制作平滑动画的方法。"
+   },
+   "image": "images/JeremyGamer13/tween.svg",
+   "by": [
+    {
+     "name": "JeremyGamer13",
+     "link": "https://scratch.mit.edu/users/JeremyGamer13/"
+    },
+    {
+     "name": "Fath11",
+     "link": "https://scratch.mit.edu/users/Fath11/"
+    }
+   ]
+  },
+  {
+   "slug": "SharkPool/Camera",
+   "id": "SPcamera",
+   "name": "Camera V2",
+   "description": "Move the visible part of the stage.",
+   "nameTranslations": {
+    "de": "Kamera V2",
+    "fi": "Kamera V2",
+    "hu": "Kamera V2",
+    "ja": "カメラ V2",
+    "ko": "카메라 V2",
+    "ru": "Камера V2",
+    "zh-cn": "摄像机 V2"
+   },
+   "descriptionTranslations": {
+    "de": "Bewege den angezeigten Teil der Bühne.",
+    "fi": "Liikuta esiintymislavan näkyvää osaa.",
+    "hu": "Mozgasd a színpad látható részét.",
+    "it": "Cambia la parte visibile dello Stage.",
+    "ja": "ステージの表示されている部分を動かします。",
+    "ko": "무대에서 보이는 부분의 위치를 변경합니다.",
+    "nb": "Flytt den synlige delen av scenen.",
+    "nl": "Verplaats het zichtbare deel van het speelveld.",
+    "ru": "Переместите видимую часть сцены.",
+    "tr": "Sahnenin görünür kısmını hareket ettirin.",
+    "uk": "Переміщайте видиму частину сцени.",
+    "zh-cn": "移动舞台的可见部分。"
+   },
+   "image": "images/SharkPool/Camera.svg",
+   "by": [
+    {
+     "name": "SharkPool",
+     "link": null
+    }
+   ]
+  },
+  {
+   "slug": "box2d",
+   "id": "griffpatch",
+   "name": "Box2D Physics",
+   "description": "Two dimensional physics.",
+   "nameTranslations": {
+    "de": "Box2D-Physik",
+    "fi": "Box2D-fysiikka",
+    "it": "Fisica Box2D",
+    "ja": "Box2D 物理",
+    "ko": "Box2D 물리",
+    "nb": "Box2D Fysikk",
+    "ru": "Физика Box2D",
+    "uk": "Фізика Box2D",
+    "zh-cn": "Box2D 物理"
+   },
+   "descriptionTranslations": {
+    "de": "Zweidimensionale Physik.",
+    "fi": "Kaksiulotteinen fysiikka.",
+    "it": "Fisica bidimensionale.",
+    "ja": "2次元物理学。",
+    "ko": "2차원 물리 작용을 다룹니다.",
+    "nb": "To-dimensjonal fysikk.",
+    "nl": "Twee-dimensionale physics-simulatie.",
+    "ru": "Двухмерная физика.",
+    "uk": "Двохвимірна фізика",
+    "zh-cn": "2D 物理引擎。"
+   },
+   "image": "images/box2d.svg",
+   "original": [
+    {
+     "name": "griffpatch",
+     "link": "https://scratch.mit.edu/users/griffpatch/"
+    }
+   ]
+  },
+  {
+   "slug": "gamepad",
+   "id": "Gamepad",
+   "name": "Gamepad",
+   "description": "Directly access gamepads instead of just mapping buttons to keys.",
+   "nameTranslations": {
+    "fi": "Peliohjain",
+    "ja": "ゲームパッド",
+    "ko": "게임패드",
+    "nb": "Spillkontroller",
+    "ru": "Геймпад",
+    "uk": "Геймпад",
+    "zh-cn": "游戏手柄"
+   },
+   "descriptionTranslations": {
+    "de": "Greife direkt auf Gamepads zu, statt nur Knöpfe zu Tasten zu machen.",
+    "fi": "Käytä peliohjaimia suoraan sen sijaan, että yhdistäisit painikkeita näppäimiin.",
+    "it": "Accede direttamente ai gamepad invece di mappare soltanto i pulsanti in tasti.",
+    "ja": "ボタンをキーに割り当てるだけでなく、ゲームパッドに直接アクセスする。",
+    "ko": "게임패드의 버튼을 키에 지정하는 대신 게임패드에 직접적으로 접근합니다.",
+    "nb": "Direkte tilgang til spillkontrollere i stedet for bare å kartlegge knapper til taster.",
+    "nl": "Lees direct de signalen van gamepads af in plaats van knoppen met toetsen te verbinden.",
+    "ru": "Прямой доступ к геймпадам вместо обычных отображающих кнопок в клавиши.",
+    "uk": "Прямий доступ до геймпаду замість підбирання кнопок до клавіш.",
+    "zh-cn": "直接访问游戏手柄而不再将按钮映射为按键。"
+   },
+   "image": "images/gamepad.svg",
+   "by": [
+    {
+     "name": "GarboMuffin",
+     "link": null
+    }
+   ]
+  },
+  {
+   "slug": "Lily/ClonesPlus",
+   "id": "lmsclonesplus",
+   "name": "Clones Plus",
+   "description": "Expansion of Scratch's clone features.",
+   "nameTranslations": {
+    "de": "Klone Plus",
+    "fi": "Kloonit Plus",
+    "it": "Cloni Plus",
+    "ja": "クローンプラス",
+    "ko": "복제본 플러스",
+    "nb": "Kloner Pluss",
+    "nl": "Klonen uitgebreid",
+    "ru": "Клоны Плюс",
+    "tr": "Klonlar Plus",
+    "uk": "Клони Плюс",
+    "zh-cn": "克隆 +"
+   },
+   "descriptionTranslations": {
+    "de": "Erweitert die Klonfunktionen von Scratch.",
+    "fi": "Laajentaa Scratchin klooniominaisuuksia.",
+    "it": "Estensione delle possibilità dei cloni di Scratch.",
+    "ja": "Scratch のクローン機能を拡張する。",
+    "ko": "스크래치의 복제본 기능에 대해 더욱 확장하여 다룹니다.",
+    "nb": "Utvidelse av Scratchs klonfunksjoner.",
+    "nl": "Gebruik tal van nieuwe kloon-gerelateerde functies.",
+    "ru": "Расширенные возможности для клонов Scratch.",
+    "tr": "Scratch'in klon özelliklerinin genişletilmesi.",
+    "uk": "Більше блоків для роботи з клонами.",
+    "zh-cn": "Scratch 的克隆功能的推广与延申。"
+   },
+   "image": "images/Lily/ClonesPlus.svg",
+   "by": [
+    {
+     "name": "LilyMakesThings",
+     "link": "https://scratch.mit.edu/users/LilyMakesThings/"
+    }
+   ]
+  },
+  {
+   "slug": "Lily/MoreEvents",
+   "id": "lmsMoreEvents",
+   "name": "More Events",
+   "description": "Start your scripts in new ways.",
+   "nameTranslations": {
+    "de": "Mehr Ereignisse",
+    "fi": "Enemmän tapahtumia",
+    "it": "Altri Eventi",
+    "ja": "イベントブロックの追加",
+    "ko": "추가 이벤트",
+    "nb": "Meir Hendelser",
+    "nl": "Meer gebeurtenissen",
+    "ru": "Больше Событий",
+    "tr": "Daha Fazla Etkinlik",
+    "uk": "Більше Подій",
+    "zh-cn": "更多事件"
+   },
+   "descriptionTranslations": {
+    "de": "Neue Wege, um deine Skripte zu starten.",
+    "fi": "Käynnistä skriptisi uusilla tavoilla.",
+    "it": "Avvia i tuoi script in nuovi modi.",
+    "ja": "新しい方法でスクリプトを開始する。",
+    "ko": "스크립트를 보다 다양한 방식으로 실행합니다.",
+    "nb": "Start dine skript på nye måter.",
+    "nl": "Begin je scripts op nieuwe manieren.",
+    "ru": "Начинает ваши скрипты в новых путях.",
+    "tr": "Senaryolarınızı yeni yöntemlerle başlatın.",
+    "uk": "Запускайте скрипти новими способами.",
+    "zh-cn": "启动作品的更多方式。"
+   },
+   "image": "images/Lily/MoreEvents.svg",
+   "by": [
+    {
+     "name": "LilyMakesThings",
+     "link": "https://scratch.mit.edu/users/LilyMakesThings/"
+    }
+   ]
+  },
+  {
+   "slug": "local-storage",
+   "id": "localstorage",
+   "name": "Local Storage",
+   "description": "Store data persistently. Like cookies, but better.",
+   "nameTranslations": {
+    "de": "Speicherplatz",
+    "es": "Almacenaje Local",
+    "fi": "Paikallinen muisti",
+    "it": "Memoria Locale",
+    "ja": "ローカルストレージ",
+    "ko": "로컬 스토리지",
+    "nb": "Lokal lagring",
+    "nl": "Lokale opslag",
+    "ru": "Локальное Хранилище",
+    "uk": "Локальне Сховище",
+    "zh-cn": "本地存储"
+   },
+   "descriptionTranslations": {
+    "de": "Speichert Daten für immer. Wie Cookies, aber besser.",
+    "es": "Guarda datos de forma persistente. Es como cookies, pero mejor.",
+    "fi": "Tallenna tietoa pysyvästi. Aivan kuin evästeet, mutta parempi.",
+    "it": "Memorizza dati persistenti. Come i cookie, ma in modo migliore.",
+    "ja": "持続的なデータを保存する。Cookies に似たような機能ですが、より良いです。",
+    "ko": "일시적으로 데이터를 저장합니다. 쿠키와 유사하지만, 보다 향상되었습니다.",
+    "nb": "Lagre data varig. Som informasjonskapsler, men bedre.",
+    "nl": "Sla gegevens aanhoudend op. Vergelijkbaar met cookies, maar dan beter.",
+    "ru": "Сохраняет постоянные данные. Как файлы cookie, но лучше.",
+    "uk": "Зберігайте постійні дані, Як куки, тільки краще.",
+    "zh-cn": "持久地存储数据。类似于 Cookies，但这项技术更好。"
+   },
+   "image": "images/local-storage.svg",
+   "by": [
+    {
+     "name": "infernostars",
+     "link": null
+    },
+    {
+     "name": "GarboMuffin",
+     "link": null
+    }
+   ]
+  },
+  {
+   "slug": "NOname-awa/graphics2d",
+   "id": "nonameawagraph",
+   "name": "Graphics 2D",
+   "description": "Blocks to compute lengths, angles, and areas in two dimensions.",
+   "nameTranslations": {
+    "de": "Grafiken 2D",
+    "es": "Gráficos 2D",
+    "fi": "2D-grafiikka",
+    "it": "Grafica 2D",
+    "ja": "グラフィック2D",
+    "ko": "그래픽 2D",
+    "nb": "Grafikk 2D",
+    "nl": "2D-trigonometrie",
+    "ru": "Графика 2D",
+    "tr": "Grafik 2D",
+    "uk": "2D Графіка",
+    "zh-cn": "图形 2D"
+   },
+   "descriptionTranslations": {
+    "de": "Blöcke um Längen, Winkel und Flächen in zwei Dimensionen auszurechnen.",
+    "fi": "Lohkoja pituuden, kulman ja alueiden kaksiulotteisuuden laskemiseen.",
+    "it": "Blocchi per calcolare distanza, angoli e aree in due dimensioni.",
+    "ja": "二次元空間での長さ、角度、面積を計算するブロック。",
+    "ko": "2차원상의 길이, 각도, 넓이 등을 연산합니다.",
+    "nb": "Blokker for å beregne lengder, vinkler og områder i to dimensjoner.",
+    "nl": "Bereken trigonometrische dingen zoals lengtes, hoeken en oppervlaktes in twee dimensies.",
+    "ru": "Блоки чтобы рассчитывать длину, углы, и зоны во втором измерении.",
+    "tr": "Uzunlukları, açıları ve alanları iki boyutta hesaplamak için bloklar.",
+    "uk": "Блоки для вираховування довжини, кутів та площ у двох площинах.",
+    "zh-cn": "计算二维长度、角度、面积的积木。"
+   },
+   "image": "images/NOname-awa/graphics2d.svg",
+   "by": [
+    {
+     "name": "NOname-awa",
+     "link": null
+    }
+   ]
+  },
+  {
+   "slug": "qxsck/data-analysis",
+   "id": "qxsckdataanalysis",
+   "name": "Data Analysis",
+   "description": "Blocks to compute means, medians, maximums, minimums, variances, and modes.",
+   "nameTranslations": {
+    "de": "Datenanalyse",
+    "fi": "Datan analysointi",
+    "it": "Analisi dei Dati",
+    "ja": "データ分析",
+    "ko": "데이터 분석",
+    "nb": "Dataanalyse",
+    "nl": "Gegevens analyseren",
+    "ru": "Анализация Данных",
+    "zh-cn": "数据分析"
+   },
+   "descriptionTranslations": {
+    "de": "Blöcke um Durchschnitte, Mediane, Maxima, Minimia, Varianzen und Modi auszurechnen.",
+    "fi": "Lohkoja keskiarvojen, mediaanien, maksimien, minimien, varianssien ja moodien laskemiseen.",
+    "it": "Blocchi che calcolano medie, mediane, massimi, minimi, varianze e mode.",
+    "ja": "平均値、中央値、最大値、最小値、分散、最頻値を計算するブロック。",
+    "ko": "평균, 중앙값, 최대, 최소, 분산, 최빈값 등을 연산하는 블록들입니다.",
+    "nb": "Blokker for å beregne gjennomsnitt, medianer, maksimum, minimum, varians og moduser.",
+    "nl": "Bereken gemiddelde, mediaan, maximum, minimum, variantie en modus van een reeks getallen.",
+    "ru": "Блоки для вычисления средних значений, медиан, максимумов, минимумов, дисперсий и режимов.",
+    "zh-cn": "关于数据分析的积木，如平均数，最大值，最小值，中位数，众数，方差等。"
+   },
+   "image": "images/qxsck/data-analysis.svg",
+   "by": [
+    {
+     "name": "qxsck",
+     "link": "https://scratch.mit.edu/users/qxsck/"
+    }
+   ]
+  },
+  {
+   "slug": "true-fantom/math",
+   "id": "truefantommath",
+   "name": "Math",
+   "description": "A lot of operators blocks, from exponentiation to trigonometric functions.",
+   "nameTranslations": {
+    "de": "Mathe",
+    "fi": "Matematiikka",
+    "it": "Matematica",
+    "ja": "数学",
+    "ko": "수학",
+    "nb": "Matte",
+    "nl": "Wiskunde",
+    "ru": "Математика",
+    "uk": "Математика",
+    "zh-cn": "数学"
+   },
+   "descriptionTranslations": {
+    "de": "Viele Operatorblöcke, von Potenzen zu trigonometrischen Funktionen.",
+    "fi": "Paljon operaattorilohkoja, potenssiin korotuksesta trigonometrisiin funktioihin.",
+    "it": "Diversi blocchi di tipo operatore, dall'esponente alle funzioni trigonometriche.",
+    "ja": "指数から三角関数までの多くの演算子ブロック",
+    "ko": "지수 함수부터 삼각 함수까지의 다양한 연산 블록들입니다.",
+    "nb": "Mange operatører blokker, fra eksponentiering til trigonometriske funksjoner.",
+    "nl": "Maak gebruik van een hoop functieblokken, van machtsverheffen tot trigonometrische functies.",
+    "ru": "Много блоков оператора, от возведения в степень до тригонометрических функций.",
+    "uk": "Безліч блоків-операторів, від піднесення до степеня до тригонометричних функцій.",
+    "zh-cn": "添加了从求幂到三角函数计算的大量积木。"
+   },
+   "image": "images/true-fantom/math.svg",
+   "by": [
+    {
+     "name": "TrueFantom",
+     "link": "https://scratch.mit.edu/users/TrueFantom/"
+    }
+   ]
+  },
+  {
+   "slug": "text",
+   "id": "strings",
+   "name": "Text",
+   "description": "Manipulate characters and text.",
+   "nameTranslations": {
+    "es": "Texto",
+    "fi": "Teksti",
+    "he": "טקסט",
+    "hu": "Szöveg",
+    "it": "Testo",
+    "ja": "テキスト",
+    "ko": "텍스트",
+    "nb": "Tekst",
+    "nl": "Tekst",
+    "pl": "Tekst",
+    "pt-br": "Texto",
+    "ru": "Текст",
+    "sl": "Besedilo",
+    "tr": "Metin",
+    "uk": "Текст",
+    "zh-cn": "文本"
+   },
+   "descriptionTranslations": {
+    "de": "Manipuliere Zeichen und Text.",
+    "es": "Manipula caracteres y texto.",
+    "fi": "Käsittele merkkejä ja tekstiä.",
+    "it": "Manipola caratteri e testi.",
+    "ja": "文字やテキストを操作する。",
+    "ko": "문자 및 텍스트를 다룹니다.",
+    "nb": "Manipulere tegn og tekst.",
+    "nl": "Manipuleer tekens en tekst.",
+    "ru": "Манипулирует символами и текстом.",
+    "uk": "Маніпулюйте символами та текстом.",
+    "zh-cn": "处理字符与文本。"
+   },
+   "image": "images/text.svg",
+   "by": [
+    {
+     "name": "CST1229",
+     "link": "https://scratch.mit.edu/users/CST1229/"
+    },
+    {
+     "name": "BludIsAnLemon",
+     "link": "https://scratch.mit.edu/users/BludIsAnLemon/"
+    },
+    {
+     "name": "Man-o-Valor",
+     "link": "https://scratch.mit.edu/users/man-o-valor/"
+    }
+   ]
+  },
+  {
+   "slug": "Lily/ListTools",
+   "id": "lmsListTools",
+   "name": "List Tools",
+   "description": "An assortment of new ways to interact with lists.",
+   "nameTranslations": {
+    "de": "Listenwerkzeuge",
+    "fi": "Listatyökalut",
+    "it": "Strumenti Avanzati per Liste",
+    "ja": "リストツール",
+    "ko": "리스트 도구",
+    "nb": "Liste verktøy",
+    "nl": "Lijsttools",
+    "ru": "Инструменты Списка",
+    "tr": "Liste Araçları",
+    "uk": "Інструменти для Списків",
+    "zh-cn": "列表工具"
+   },
+   "descriptionTranslations": {
+    "de": "Mehrere Wege zur Interaktion mit Listen.",
+    "fi": "Joukko uusia tapoja vuorovaikuttaa listojen kanssa.",
+    "it": "Diversi nuovi blocchi per lavorare sulle liste.",
+    "ja": "リストを操作するための様々な新しいブロック。",
+    "ko": "리스트를 조작하는 다양하고 새로운 방식을 제공합니다.",
+    "nb": "En rekke nye måter å samhandle med lister på.",
+    "nl": "Gebruik een assortiment aan nieuwe manieren om met lijsten te communiceren.",
+    "ru": "Множество новых способов взаимодействия со списками.",
+    "tr": "Listelerle etkileşim kurmanın çeşitli yeni yolları.",
+    "uk": "Більший асортимент з новими можливостями для взаємодії зі списками.",
+    "zh-cn": "崭新的与列表交互的方式。"
+   },
+   "image": "images/Lily/ListTools.svg",
+   "by": [
+    {
+     "name": "LilyMakesThings",
+     "link": "https://scratch.mit.edu/users/LilyMakesThings/"
+    }
+   ]
+  },
+  {
+   "slug": "-SIPC-/time",
+   "id": "sipctime",
+   "name": "Time",
+   "description": "Blocks for times, dates, and time zones.",
+   "nameTranslations": {
+    "de": "Zeit",
+    "fi": "Aika",
+    "fr": "Temps",
+    "it": "Unix Time",
+    "ja": "時間",
+    "ko": "시간",
+    "nb": "Tid",
+    "nl": "Tijd",
+    "pl": "Czas",
+    "ru": "Время",
+    "tr": "Zaman",
+    "uk": "Час",
+    "zh-cn": "时间"
+   },
+   "descriptionTranslations": {
+    "de": "Blöcke für Zeiten, Datum und Zeitzonen.",
+    "fi": "Lohkoja aikoja, päivämääriä ja aikavyöhykkeitä varten.",
+    "it": "Blocchi per ora, data e fuso orario",
+    "ja": "時間、日付、タイムゾーンのためのブロック",
+    "ko": "시간, 날짜 및 타임존을 다룹니다.",
+    "nb": "Blokker for tider, datoer og tidssoner.",
+    "nl": "Lees de tijd, datum en tijdzones af.",
+    "ru": "Блоки на время, даты, и тайм-зоны.",
+    "tr": "Saatler, tarihler ve zaman dilimleri için bloklar.",
+    "uk": "Дізнайтеся дату, час та часовий пояс.",
+    "zh-cn": "关于时间、日期和时区的积木。"
+   },
+   "image": "images/-SIPC-/time.svg",
+   "by": [
+    {
+     "name": "-SIPC-",
+     "link": null
+    },
+    {
+     "name": "SharkPool",
+     "link": "https://scratch.mit.edu/users/DemonX5/"
+    }
+   ]
+  }
+ ]
+}
