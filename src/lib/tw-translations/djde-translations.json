@@ -5,7 +5,11 @@
         "djde.home.description": "Here you play and show your {APP_NAME} projects. To open one, use File → Load from your computer and choose the .sb3 file.",
         "djde.home.phoneHint": "To program, use a computer or tablet. {editorLink}",
         "djde.home.openEditorAnyway": "Open the editor anyway",
-        "djde.home.openEditor": "Open the editor"
+        "djde.home.openEditor": "Open the editor",
+        "tw.extensionGallery.more": "Extensions reviewed by the DJDE team.",
+        "tw.extensionGallery.error": "Could not load the DJDE extension gallery.",
+        "gui.webglModal.description": "Unfortunately it looks like your browser or computer {webGlLink}. This technology is needed for DJDE Studio to run.",
+        "tw.settingsModal.storeProjectOptionsHelp": "Stores the selected settings in the project so they will be automatically applied when this project is loaded in DJDE Studio or TurboWarp. Warp timer and disable compiler will not be saved."
     },
     "pt": {
         "djde.guiDefaultTitle": "Crie jogos programando com blocos",
@@ -15,7 +19,11 @@
         "djde.home.openEditorAnyway": "Abrir o editor mesmo assim",
         "djde.home.openEditor": "Abrir o editor",
         "tw.footer.disclaimer": "O {APP_NAME} não é afiliado ao Scratch, ao Time do Scratch nem à Scratch Foundation.",
-        "tw.footer.scratchDisclaimer": "O Scratch é um projeto da Scratch Foundation, disponível gratuitamente em {scratchDotOrg}."
+        "tw.footer.scratchDisclaimer": "O Scratch é um projeto da Scratch Foundation, disponível gratuitamente em {scratchDotOrg}.",
+        "tw.extensionGallery.more": "Extensões revisadas pela equipe DJDE.",
+        "tw.extensionGallery.error": "Não foi possível carregar a galeria de extensões do DJDE.",
+        "gui.webglModal.description": "Parece que o seu navegador ou computador {webGlLink}. Essa tecnologia é necessária para o DJDE Studio funcionar.",
+        "tw.settingsModal.storeProjectOptionsHelp": "Guarda as configurações escolhidas no projeto, para que sejam aplicadas automaticamente quando ele for aberto no DJDE Studio ou no TurboWarp. O temporizador de warp e a desativação do compilador não são salvos."
     },
     "pt-br": {
         "djde.guiDefaultTitle": "Crie jogos programando com blocos",
@@ -25,7 +33,11 @@
         "djde.home.openEditorAnyway": "Abrir o editor mesmo assim",
         "djde.home.openEditor": "Abrir o editor",
         "tw.footer.disclaimer": "O {APP_NAME} não é afiliado ao Scratch, ao Time do Scratch nem à Scratch Foundation.",
-        "tw.footer.scratchDisclaimer": "O Scratch é um projeto da Scratch Foundation, disponível gratuitamente em {scratchDotOrg}."
+        "tw.footer.scratchDisclaimer": "O Scratch é um projeto da Scratch Foundation, disponível gratuitamente em {scratchDotOrg}.",
+        "tw.extensionGallery.more": "Extensões revisadas pela equipe DJDE.",
+        "tw.extensionGallery.error": "Não foi possível carregar a galeria de extensões do DJDE.",
+        "gui.webglModal.description": "Parece que o seu navegador ou computador {webGlLink}. Essa tecnologia é necessária para o DJDE Studio funcionar.",
+        "tw.settingsModal.storeProjectOptionsHelp": "Guarda as configurações escolhidas no projeto, para que sejam aplicadas automaticamente quando ele for aberto no DJDE Studio ou no TurboWarp. O temporizador de warp e a desativação do compilador não são salvos."
     },
     "es": {
         "djde.guiDefaultTitle": "Crea juegos programando con bloques",
@@ -34,6 +46,10 @@
         "djde.home.description": "Aquí juegas y muestras tus proyectos de {APP_NAME}. Para abrir uno, usa Archivo → Cargar desde tu computadora y elige el archivo .sb3.",
         "djde.home.phoneHint": "Para programar, usa una computadora o tableta. {editorLink}",
         "djde.home.openEditorAnyway": "Abrir el editor de todos modos",
-        "djde.home.openEditor": "Abrir el editor"
+        "djde.home.openEditor": "Abrir el editor",
+        "tw.extensionGallery.more": "Extensiones revisadas por el equipo DJDE.",
+        "tw.extensionGallery.error": "No se pudo cargar la galería de extensiones de DJDE.",
+        "gui.webglModal.description": "Parece que tu navegador o tu computadora {webGlLink}. Esta tecnología es necesaria para que DJDE Studio funcione.",
+        "tw.settingsModal.storeProjectOptionsHelp": "Guarda la configuración elegida en el proyecto para que se aplique automáticamente cuando se abra en DJDE Studio o en TurboWarp. El temporizador de warp y la desactivación del compilador no se guardan."
     }
 }

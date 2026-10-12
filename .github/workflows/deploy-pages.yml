@@ -26,6 +26,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Galeria DJDE (D1): só é ligada quando galeria/ tem catálogo aprovado.
+      - name: Galeria DJDE
+        run: |
+          if [ -f galeria/generated-metadata/extensions-v0.json ]; then
+            echo "DJDE_GALLERY_URL=https://${GITHUB_REPOSITORY_OWNER,,}.github.io/djdestudio/galeria/" >> "$GITHUB_ENV"
+          fi
       - run: npm run build
         env:
           NODE_ENV: production
@@ -34,6 +40,11 @@ jobs:
           ROUTING_STYLE: filehash
           NODE_OPTIONS: --max-old-space-size=4096
       - run: touch build/.nojekyll
+      - name: Publicar galeria DJDE
+        run: |
+          if [ -f galeria/generated-metadata/extensions-v0.json ]; then
+            cp -r galeria build/galeria
+          fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build

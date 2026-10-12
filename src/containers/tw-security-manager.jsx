@@ -6,6 +6,12 @@ import bindAll from 'lodash.bindall';
 import SecurityManagerModal from '../components/tw-security-manager-modal/security-manager-modal.jsx';
 import SecurityModals from '../lib/tw-security-manager-constants';
 import {getPersistedUnsandboxed, setPersistedUnsandboxed} from '../lib/tw-persisted-unsandboxed.js';
+import {
+    loadGallerySlugs,
+    isDJDEGalleryURL,
+    isTurboWarpGalleryURL,
+    toDJDEGalleryURL
+} from '../lib/djde/gallery.js';
 
 /* eslint-disable require-atomic-updates */
 
@@ -25,6 +31,11 @@ const manuallyTrustExtension = url => {
  */
 const isTrustedExtension = url => (
     // DJDE Studio (D-07): a galeria extensions.turbowarp.org não é mais confiável automaticamente.
+
+    // DJDE Studio (D3): a galeria DJDE é confiável, só dentro do seu prefixo. Uma URL antiga da
+    // galeria TurboWarp com cópia na galeria DJDE também é, porque será reescrita para a cópia.
+    isDJDEGalleryURL(url) ||
+    toDJDEGalleryURL(url) !== null ||
 
     // Só em build de desenvolvimento (D-02).
     (process.env.NODE_ENV !== 'production' && url.startsWith('http://localhost:8000/')) ||
@@ -59,27 +70,14 @@ const isUntrustedPath = parsed => (
  * @returns {boolean} True if the URL is part of the builtin set of URLs to always trust fetching from.
  */
 const isAlwaysTrustedForFetching = parsed => (
-    // If we would trust loading an extension from here, we can trust loading resources too.
-    isTrustedExtension(parsed.href) ||
-
-    // DJDE Studio (D-07): serviços da TurboWarp (*.turbowarp.org/.xyz) saíram desta lista;
-    // um projeto que tente acessá-los passa a pedir permissão ao usuário.
-
-    // GitHub API
-    // GitHub Pages allows redirects, so not included here.
-    parsed.origin === 'https://raw.githubusercontent.com' ||
-    parsed.origin === 'https://gist.githubusercontent.com' ||
-    parsed.origin === 'https://api.github.com' ||
-
-    // GitLab API
-    // GitLab Pages allows redirects, so not included here.
-    parsed.origin === 'https://gitlab.com' ||
-
-    // Sourcehut Pages
-    parsed.origin.endsWith('.srht.site') ||
-
-    // GameJolt
-    parsed.origin === 'https://api.gamejolt.com'
+    // DJDE Studio: sem modal, só a galeria DJDE (no seu prefixo), localhost:8000 em
+    // desenvolvimento e extensões confiadas pelo usuário na sessão. Não usa isTrustedExtension
+    // inteiro: uma URL da galeria TurboWarp com cópia DJDE só é confiável para carregar (ela é
+    // reescrita para a cópia), não para um fetch que iria de fato à TurboWarp.
+    // Saíram desta lista (D-07): *.turbowarp.org/.xyz, GitHub, GitLab, Sourcehut e GameJolt.
+    isDJDEGalleryURL(parsed.href) ||
+    (process.env.NODE_ENV !== 'production' && parsed.href.startsWith('http://localhost:8000/')) ||
+    extensionsTrustedByUser.has(parsed.href)
 );
 
 const FETCHABLE_PROTOCOLS = [
@@ -129,6 +127,7 @@ let allowedGeolocation = false;
 const SECURITY_MANAGER_METHODS = [
     'getSandboxMode',
     'canLoadExtensionFromProject',
+    'rewriteExtensionURL',
     'canFetch',
     'canOpenWindow',
     'canRedirect',
@@ -230,12 +229,32 @@ class TWSecurityManagerComponent extends React.Component {
      * @param {string} url The extension's URL
      * @returns {string} The VM worker mode to use
      */
-    getSandboxMode (url) {
+    async getSandboxMode (url) {
+        await loadGallerySlugs();
         if (isTrustedExtension(url)) {
             log.info(`Loading extension ${url} unsandboxed`);
             return 'unsandboxed';
         }
         return 'iframe';
+    }
+
+    /**
+     * DJDE Studio: troca uma URL da galeria TurboWarp pela cópia na galeria DJDE.
+     * Sem cópia, recusa: nada é baixado de extensions.turbowarp.org.
+     * @param {string} url The extension's URL
+     * @returns {Promise<string>} The URL to actually load
+     */
+    async rewriteExtensionURL (url) {
+        await loadGallerySlugs();
+        const djdeURL = toDJDEGalleryURL(url);
+        if (djdeURL) {
+            log.info(`Loading extension ${url} from the DJDE gallery: ${djdeURL}`);
+            return djdeURL;
+        }
+        if (isTurboWarpGalleryURL(url)) {
+            throw new Error(`Esta extensão da galeria TurboWarp não está na galeria do DJDE Studio: ${url}`);
+        }
+        return url;
     }
 
     handleChangeUnsandboxed (e) {
@@ -253,9 +272,16 @@ class TWSecurityManagerComponent extends React.Component {
      * @returns {Promise<boolean>} Whether the extension can be loaded
      */
     async canLoadExtensionFromProject (url) {
+        await loadGallerySlugs();
         if (isTrustedExtension(url)) {
             log.info(`Loading extension ${url} automatically`);
             return true;
+        }
+        if (isTurboWarpGalleryURL(url)) {
+            // DJDE Studio: extensão da galeria TurboWarp sem cópia na galeria DJDE não carrega
+            // (nada vai para a TurboWarp). O projeto não abre e o erro cita a extensão.
+            log.warn(`Extension ${url} is not in the DJDE gallery`);
+            return false;
         }
         const {showModal} = await this.acquireModalLock();
         if (url.startsWith('data:')) {

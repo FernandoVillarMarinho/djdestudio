@@ -11,6 +11,7 @@ import extensionLibraryContent, {
     galleryMore
 } from '../lib/libraries/extensions/index.jsx';
 import extensionTags from '../lib/libraries/tw-extension-tags';
+import {GALLERY_ROOT} from '../lib/djde/gallery.js';
 
 import LibraryComponent from '../components/library/library.jsx';
 import extensionIcon from '../components/action-menu/icon--sprite.svg';
@@ -39,10 +40,9 @@ const translateGalleryItem = (extension, locale) => ({
     description: extension.descriptionTranslations[locale] || extension.description
 });
 
-// DJDE Studio (D-07): a galeria da TurboWarp saiu. A galeria DJDE entra pelo build
-// (DJDE_GALLERY_URL, raiz com barra final, no formato de extensions-v0.json).
+// DJDE Studio (D-07, D1): a galeria da TurboWarp saiu. A galeria DJDE entra pelo build
+// (DJDE_GALLERY_URL em lib/djde/gallery.js, raiz com barra final, formato extensions-v0.json).
 // Vazia = sem galeria e sem nenhuma requisição ao abrir a biblioteca.
-const GALLERY_ROOT = process.env.DJDE_GALLERY_URL || '';
 
 let cachedGallery = null;
 
