@@ -1,124 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
     <head>
-        <title>TurboWarp Privacy Policy</title>
+        <title>DJDE Studio: privacidade</title>
         <meta charset="utf8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             body {
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
                 margin: 0; padding: 0;
+                line-height: 1.5;
             }
             header {
-                background-color: hsla(0, 100%, 65%, 1);
+                background-color: #333333;
                 color: white;
                 text-align: center;
-                padding: 20px 0;
+                padding: 20px 16px;
             }
             main {
-                max-width: 600px;
+                max-width: 640px;
                 margin: auto;
+                padding: 0 16px 32px;
+            }
+            .provisorio {
+                border: 1px solid #c90;
+                background: #fff6dd;
+                padding: 8px 12px;
+                border-radius: 4px;
+            }
+            code {
+                font-size: 0.95em;
             }
             @media (prefers-color-scheme: dark) {
                 body { background: #111; color: #eee; }
                 a { color: #4af; }
+                .provisorio { background: #332a10; border-color: #a80; }
             }
         </style>
     </head>
 
     <body>
         <header>
-            <h1>TurboWarp Privacy Policy</h1>
+            <h1>DJDE Studio: privacidade</h1>
         </header>
-
         <main>
-            <!-- UPDATE THIS WHEN MAKING CONTENT CHANGES -->
-            <p><i>Updated September 27, 2025</i></p>
-
-            <p>The TurboWarp project respects your privacy. We're an open source project ran by volunteers. For transparency, this page lists all the places in TurboWarp where we or a third-party receive your data and how your data is handled.</p>
-
-            <h2>Abuse</h2>
-            <p>When a service is being abused, we may take measures to collect information to protect the service. For example, we could log IP addresses making excessive amounts of requests. We strive to do this carefully so that no one is caught in the crossfire. Data is kept only as long as needed to stop the abuse.</p>
-
-            <h2>turbowarp.org</h2>
-            <p>A randomly generated username may be saved in your browser. You can replace this with a custom username. Randomly generated usernames are anonymized by removing the random numbers before being sent to any cloud variable server.</p>
-            <p>When you start a project that is loaded from Scratch, this may be logged so that a view counter can be incremented over time. Views are anonymous and can not be tied back to any user. You can prevent your views from being counted by unchecking the box below. This checkbox will not affect your ability to see view counts.</p>
-            <p>
-                <label>
-                    <input type="checkbox" class="windchimes-optout">
-                    Allow counting my views
-                </label>
+            <p class="provisorio">
+                <strong>Versão provisória (12/10/2026).</strong>
+                Esta página descreve, de forma factual, o que o código do DJDE Studio faz hoje.
+                Ela ainda será revisada pela equipe do projeto DJDE (UFRJ), inclusive à luz da LGPD.
             </p>
-            <script>
-                (function() {
-                    const isOptedOut = () => {
-                        try {
-                            const local = localStorage.getItem('tw:windchime_opt_out');
-                            if (local !== null) {
-                                return local === 'true';
-                            }
-                        } catch (e) {
-                            // ignore
-                        }
-                        // These headers are really intended to be about third-parties so we don't need to follow them,
-                        // but if someone has these set, it's good to assume that they would opt out if given the choice.
-                        // So we'll just respect that preemptively.
-                        return navigator.globalPrivacyControl === 'true' || navigator.doNotTrack === '1';
-                    };
-                    const setOptedOut = optedOut => {
-                        try {
-                            localStorage.setItem('tw:windchime_opt_out', optedOut);
-                        } catch (e) {
-                            // ignore
-                        }
-                    };
-                    const checkbox = document.querySelector('.windchimes-optout');
-                    checkbox.checked = !isOptedOut();
-                    checkbox.addEventListener('change', (e) => {
-                        setOptedOut(!e.target.checked);
-                    });
-                })();
-            </script>
 
-            <h2>Loading projects</h2>
-            <p>When you load a project from another website, you are subject to the privacy practices of that website. For example, when loading projects from Scratch, you are subject to the <a href="https://scratch.mit.edu/privacy_policy">Scratch privacy policy</a>. When loading projects from Scratch specifically, the project ID will also be shared with TurboWarp as part of Scratch's API does not allow direct access. We may briefly log the project ID for caching.</p>
+            <h2>Não temos servidor próprio</h2>
+            <p>
+                O DJDE Studio é um site estático publicado no GitHub Pages. Seus projetos não são enviados
+                para nenhum servidor do DJDE: eles ficam no seu computador e só saem dele quando você salva
+                o arquivo <code>.sb3</code> onde quiser.
+                Como todo site, o GitHub (que hospeda as páginas) recebe as informações normais de uma visita,
+                como o endereço IP; veja a política de privacidade do GitHub.
+            </p>
+            <p>
+                O DJDE Studio não tem telemetria, não conta visualizações e não usa variáveis de nuvem.
+            </p>
 
-            <h2>Cloud variables</h2>
-            <p>When connecting to our cloud variable servers, the project ID and username may be logged for 14 days. Data in cloud variables is public and sent to anyone else connected at the same time. Custom cloud variable servers are outside of our control.</p>
+            <h2>O que fica guardado no seu navegador</h2>
+            <ul>
+                <li>Preferências: idioma, tema, configurações dos addons, nome de usuário usado nos projetos e intervalo dos pontos de restauração.</li>
+                <li>Pontos de restauração do projeto aberto (cópias automáticas e manuais) e a mochila local.</li>
+            </ul>
+            <p>
+                Esses dados ficam só neste navegador e podem ser apagados limpando os dados do site.
+            </p>
 
-            <h2>Extensions</h2>
-            <p>Some extensions must communicate with external APIs to function. For example, the translate and text-to-speech extensions rely on the Scratch API, which is covered by the <a href="https://scratch.mit.edu/privacy_policy">Scratch privacy policy</a>. To improve performance, some extensions access TurboWarp's APIs instead where both the request (for example, the text being translated) and the result after forwarding to Scratch (for example, the translated version of the text) may be cached.</p>
-            <p>Most extensions on the <a href="https://extensions.turbowarp.org/">official extension gallery</a> will ask for permission when the project attempts to use the extension to access an untrusted website, however we cannot guarantee this is 100% reliable.</p>
-            <p>When loading a custom extension from a place other than the official gallery such as a URL or file on your computer, the editor will ask for permission to load the extension. If you approve this dialog, the extension can bypass the permission dialogs that official extensions show.</p>
+            <h2>Quando o site acessa outros serviços</h2>
+            <ul>
+                <li>
+                    <strong>Bibliotecas de atores, fantasias, sons e fundos:</strong> as miniaturas e os arquivos
+                    vêm do servidor de arquivos do Scratch (<code>assets.scratch.mit.edu</code>) ao abrir as
+                    bibliotecas e ao inserir um item. Isso vale até o banco de imagens próprio do DJDE entrar.
+                </li>
+                <li>
+                    <strong>Abrir um projeto do Scratch pelo número:</strong> se você usar esse recurso, o site busca
+                    o projeto em <code>projects.scratch.mit.edu</code> e os dados do projeto (título, autor) por meio
+                    de <code>trampoline.turbowarp.org</code>. Nesse caso valem também as políticas do Scratch e do TurboWarp.
+                </li>
+                <li>
+                    <strong>Projeto aberto por link</strong> (<code>project_url</code>): o projeto é baixado do endereço indicado no link.
+                </li>
+                <li>
+                    <strong>Tutoriais com vídeo:</strong> ao abrir um tutorial, o vídeo é carregado do Wistia.
+                </li>
+                <li>
+                    <strong>Extensões personalizadas:</strong> uma extensão carregada por endereço, arquivo ou texto
+                    só roda depois que você aprova. Se ela tentar acessar outros sites, o editor pede permissão,
+                    com exceção de alguns serviços de código (GitHub, GitLab, Sourcehut, GameJolt) quando você
+                    autoriza a extensão a rodar fora da área isolada.
+                </li>
+                <li>
+                    <strong>Traduzir e Texto para Fala:</strong> no DJDE Studio essas extensões não usam servidores
+                    externos. O texto não sai do seu computador; a fala usa a voz do próprio navegador.
+                </li>
+            </ul>
 
-            <h2>Settings</h2>
-            <p>Many TurboWarp websites will store settings such as <a href="https://turbowarp.org/addons">addon settings</a> or <a href="https://packager.turbowarp.org/">packager settings</a> in your browser.</p>
-
-            <h2>Aggregated data</h2>
-            <p>We may log anonymous aggregated data such as how many people use a certain site per day.</p>
-
-            <h2>TurboWarp Desktop</h2>
-            <p><a href="https://desktop.turbowarp.org/">TurboWarp Desktop</a> may make requests to check for updates. This can be disabled by pressing "Settings" then "Desktop Settings".</p>
-            <p><a href="https://desktop.turbowarp.org/">TurboWarp Desktop</a> has a disabled-by-default option to enable "Rich Presence" which shares the name of the project you have open and how long it has been open with chat apps running on your computer, which may be displayed on your public profile. This can be disabled by pressing "Settings" then "Desktop Settings".</p>
-
-            <h2>docs.turbowarp.org</h2>
-            <p>The search bar is provided by Algolia. See the <a href="https://www.algolia.com/policies/privacy/">Algolia privacy policy</a>.</p>
-
-            <h2>TurboWarp Packager</h2>
-            <p>The <a href="https://packager.turbowarp.org/">TurboWarp Packager</a> may store settings and cache large downloads such as Electron in your browser for convenience and performance.</p>
-            <p>When packaging a project using custom extensions, the packager may access those websites to download the extensions.</p>
-
-            <h2>Projects generated by the TurboWarp Packager</h2>
-            <p>Packaged projects include all scripts, costumes, and sounds to run the project. The packager tries to include all custom extensions too, but in some cases, the packaged project may need to download certain extensions each time it runs.</p>
-            <p>Advanced features such as third-party custom extensions, custom cloud host, custom JS, and custom CSS are outside of our control.</p>
-            <p>Note that, unlike the TurboWarp editor, custom extensions in packaged projects will not ask for permission before contacting websites.</p>
-            <p>You are responsible for informing end users about the privacy practices of the files you distribute. Do not link to this document as your project's privacy policy as it may change in the future. You must write your own.</p>
-
-            <h2>TurboWarp Packager Extras</h2>
-            <p><a href="https://github.com/TurboWarp/packager-extras/releases">TurboWarp Packager Extras</a> may make requests to check for updates.</p>
-
-            <h2>Contact</h2>
-            <p>Any concerns related to privacy or any other matter should be sent to: <a href="mailto:contact@turbowarp.org">contact@turbowarp.org</a></p>
+            <h2>Contato</h2>
+            <p>
+                Dúvidas ou problemas: abra uma conversa no
+                <a href="https://github.com/FernandoVillarMarinho/djdestudio/issues">repositório do DJDE Studio</a>.
+            </p>
         </main>
     </body>
 </html>

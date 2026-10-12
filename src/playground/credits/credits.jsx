@@ -13,27 +13,21 @@ import UserData from './users';
 applyGuiColors(detectTheme());
 document.documentElement.lang = 'en';
 
-const User = ({image, text, href}) => (
+// DJDE Studio: só nome e link, sem foto. As fotos vinham de trampoline.turbowarp.org
+// e eram baixadas assim que a página abria (D-07).
+const User = ({text, href}) => (
     <a
         href={href}
         target="_blank"
         rel="noreferrer"
         className={styles.user}
     >
-        <img
-            loading="lazy"
-            className={styles.userImage}
-            src={image}
-            width="60"
-            height="60"
-        />
         <div className={styles.userInfo}>
             {text}
         </div>
     </a>
 );
 User.propTypes = {
-    image: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     href: PropTypes.string
 };
@@ -64,6 +58,19 @@ const Credits = () => (
                 The {APP_NAME} project is made possible by the work of many volunteers.
             </p>
         </section>
+        {/* DJDE Studio (RF-22, M1 C3): quem faz, licença e código-fonte (GPL-3.0). */}
+        <section>
+            <h2>DJDE</h2>
+            <p>
+                {APP_NAME} is developed by DJDE (Digital Game Development in Education), UFRJ.
+            </p>
+            <p>
+                {APP_NAME} is free software under the GNU General Public License v3.0, the same license as
+                the TurboWarp and Scratch interface it is based on.
+                {' '}
+                <a href="https://github.com/FernandoVillarMarinho/djdestudio">Source code</a>
+            </p>
+        </section>
         {APP_NAME !== 'TurboWarp' && (
             // Be kind and considerate. Don't remove this :)
             <section>
@@ -91,10 +98,6 @@ const Credits = () => (
         <section>
             <h2>Addons</h2>
             <UserList users={UserData.addonDevelopers} />
-        </section>
-        <section>
-            <h2>TurboWarp Extension Gallery</h2>
-            <UserList users={UserData.extensionDevelopers} />
         </section>
         <section>
             <h2>Documentation</h2>
