@@ -252,7 +252,9 @@ class TWSecurityManagerComponent extends React.Component {
             return djdeURL;
         }
         if (isTurboWarpGalleryURL(url)) {
-            throw new Error(`Esta extensão da galeria TurboWarp não está na galeria do DJDE Studio: ${url}`);
+            // DJDE Studio (camada 2, Villar 12/10): sem cópia, carrega da TurboWarp, mas só depois
+            // do consentimento pedido em canLoadExtensionFromProject.
+            log.warn(`Extension ${url} is not in the DJDE gallery; loading it from TurboWarp`);
         }
         return url;
     }
@@ -277,13 +279,23 @@ class TWSecurityManagerComponent extends React.Component {
             log.info(`Loading extension ${url} automatically`);
             return true;
         }
-        if (isTurboWarpGalleryURL(url)) {
-            // DJDE Studio: extensão da galeria TurboWarp sem cópia na galeria DJDE não carrega
-            // (nada vai para a TurboWarp). O projeto não abre e o erro cita a extensão.
-            log.warn(`Extension ${url} is not in the DJDE gallery`);
-            return false;
-        }
         const {showModal} = await this.acquireModalLock();
+        if (isTurboWarpGalleryURL(url)) {
+            // DJDE Studio (camada 2, Villar 12/10): extensão da galeria TurboWarp sem cópia na galeria
+            // DJDE. Em vez de não abrir o projeto, pergunta. A maioria delas só funciona fora do
+            // sandbox (usa Scratch.vm/renderer), então a caixa já vem marcada, com o aviso de risco;
+            // a pessoa pode desmarcar. Nada é baixado da TurboWarp sem esse clique.
+            log.warn(`Extension ${url} is not in the DJDE gallery; asking the user`);
+            const allowed = await showModal(SecurityModals.LoadExtension, {
+                url,
+                unsandboxed: true,
+                onChangeUnsandboxed: this.handleChangeUnsandboxed.bind(this)
+            });
+            if (allowed && this.state.data.unsandboxed) {
+                manuallyTrustExtension(url);
+            }
+            return allowed;
+        }
         if (url.startsWith('data:')) {
             const allowed = await showModal(SecurityModals.LoadExtension, {
                 url,
