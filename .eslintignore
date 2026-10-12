@@ -9,3 +9,6 @@ src/addons/addons
 src/addons/libraries
 src/addons/api-libraries
 src/addons/generated
+
+# Galeria DJDE: extensões copiadas da galeria TurboWarp (revisadas em galeria/REVISOES.md)
+galeria/*
