@@ -12,4 +12,4 @@ Imagens originais para projetos feitos no DJDE Studio. Lote 1 (gerado em 11/10/2
 - **`assets.csv`** é o registro de cada imagem: id, descrição, medidas, prompt, modelo gerador, data, revisão, aprovação e o **SHA-256** do arquivo. Toda imagem nova ou alterada atualiza a linha correspondente.
 - **`prompts/`** guarda o prompt de cada imagem, para regerar no mesmo estilo.
 - Origem: geradas por IA (OpenAI GPT-image) e pós-processadas (recorte, medidas, transparência e conferência visual) pela equipe DJDE.
-- **Licença das imagens: a definir** pela coordenação do DJDE (coluna `licenca_aplicavel` do `assets.csv`).
+- **Licença das imagens: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.pt-br)** (ver `LICENSE.md`). Dentro de projetos feitos no DJDE Studio, a atribuição é dispensada.
