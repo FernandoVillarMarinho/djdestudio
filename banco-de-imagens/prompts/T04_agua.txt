@@ -1,0 +1,3 @@
+Top-down water texture: teal-blue water with soft stylized wave lines and small white highlights, evenly distributed.
+
+Style: original 2D game texture for "DJDE Studio", an educational game-making tool for Brazilian students. Clean flat vector-like illustration with soft cel shading, friendly and contemporary. Palette leaning on teal #176B80, coral #E76F61, gold #E9B44C, green #3D9970, purple #7865A8, cream #FFF5E6. SEAMLESS TILEABLE square texture: the pattern must continue perfectly across all four edges so that copies placed side by side in a 3x3 grid show no visible seams. Even lighting, no vignette, no single focal object, fill the whole square edge to edge, opaque background. No text, no logos, no watermark.
