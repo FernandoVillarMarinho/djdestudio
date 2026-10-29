@@ -1,0 +1,76 @@
+name: DJDE Studio offline (app de computador)
+
+# Gera o DJDE Studio como aplicativo de computador que funciona SEM internet,
+# empacotado com o Pake (Tauri + webview do sistema). Não publica nada:
+# os instaladores ficam como artefatos da execução.
+on:
+  push:
+    branches: [desktop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  app:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            icon: desktop/icon.ico
+            extra: --targets x64
+          - os: ubuntu-22.04
+            icon: desktop/icon.png
+            extra: --targets deb
+          - os: macos-latest
+            icon: desktop/icon.png
+            extra: --targets universal
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.os == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+      - name: Dependências do Tauri (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
+      - run: npm ci
+      # Tudo servido da raiz do app: /static e /galeria locais, nada de Pages.
+      - run: npm run build
+        env:
+          NODE_ENV: production
+          STATIC_PATH: /static
+          ROUTING_STYLE: filehash
+          DJDE_GALLERY_URL: /galeria/
+          NODE_OPTIONS: --max-old-space-size=4096
+      - name: Galeria embutida e editor como página inicial
+        shell: bash
+        run: |
+          cp -r galeria build/galeria
+          cp build/editor.html build/index.html
+      - run: npm install -g pake-cli@3.17.8
+      - name: Empacotar
+        shell: bash
+        run: |
+          mkdir -p saida && cd saida
+          pake ../build --name DJDEStudio --title "DJDE Studio" --identifier br.ufrj.djde.studio \
+            --app-version 0.1.0 --icon ../${{ matrix.icon }} --width 1280 --height 800 \
+            --wasm --enable-drag-drop ${{ matrix.extra }} --json | tee resultado.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DJDEStudio-${{ runner.os }}
+          path: |
+            saida/*.msi
+            saida/*.deb
+            saida/*.dmg
+            saida/resultado.json
+          if-no-files-found: warn
